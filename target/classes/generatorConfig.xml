@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry
+		location="/Users/kawasaki/.m2/repository/com/h2database/h2/1.4.196/h2-1.4.196.jar" />
+	<context id="H22Tables">
+		<jdbcConnection driverClass="org.h2.Driver"
+			connectionURL="jdbc:h2:~/test" userId="sa" password="">
+		</jdbcConnection>
+
+		<javaModelGenerator targetPackage="jp.co.codable.mybatissample"
+			targetProject="src/main/java/">
+		</javaModelGenerator>
+		<sqlMapGenerator targetPackage="jp.co.codable.mybatissample"
+			targetProject="src/main/java/">
+		</sqlMapGenerator>
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="jp.co.codable.mybatissample" targetProject="src/main/java/">
+		</javaClientGenerator>
+
+		<table tableName="USER" schema="PUBLIC">
+		</table>
+
+	</context>
+</generatorConfiguration>
