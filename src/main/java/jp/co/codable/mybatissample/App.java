@@ -1,5 +1,6 @@
 package jp.co.codable.mybatissample;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,22 +26,19 @@ public class App
 
         // resources直下のmybatis-config.xmlを読み込みます(1)
 		String resource = "mybatis-config.xml";
-		InputStream inputStream;
-		SqlSession session = null;
-		try {
-			inputStream = Resources.getResourceAsStream(resource);
+
+		try(	InputStream inputStream = Resources.getResourceAsStream(resource)) {
 			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-
-          // SQLセッションを取得します(3)
-		  session = sqlSessionFactory.openSession();
-		  String s = (String) session.selectOne("jp.co.codable.mybatissample.UserMapper.selectBlog", 101);
-		  System.out.println(s);
-		} catch (Exception e) {
+			try(	SqlSession session = sqlSessionFactory.openSession()){
+				UserMapper mapper = session.getMapper(UserMapper.class);
+                mapper.selectAll().forEach(s -> {
+                    System.out.println(s.getId());
+                    System.out.println(s.getName());
+                });
+			}
+		} catch (IOException e) {
 			e.printStackTrace();
-		}finally {
-			  session.close();
 		}
-
 		AdReportCreator adRepoCreator = new AdReportCreator();
 		// 書き込み用のデータの作成
 		List<UserCSV> list = new ArrayList<>();
@@ -53,7 +51,9 @@ public class App
 		record2.setId(2);
 		record2.setName("aiueo");
 		list.add(record2);
+		//書き込み
 		//adRepoCreator.createReport(list);
-		adRepoCreator.readReport();
+		//読み込み
+		//adRepoCreator.readReport();
 	}
 }
