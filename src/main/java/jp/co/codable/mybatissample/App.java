@@ -6,6 +6,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.facebook.ads.sdk.APIException;
 
@@ -15,7 +17,10 @@ import com.facebook.ads.sdk.APIException;
  */
 public class App
 {
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
 	public static void main(String args[]) throws APIException {
+        logger.info("Hello Logback!!");
+
         // resources直下のmybatis-config.xmlを読み込みます(1)
 		String resource = "mybatis-config.xml";
 		InputStream inputStream;
@@ -33,5 +38,8 @@ public class App
 		}finally {
 			  session.close();
 		}
+
+		AdReportCreator adRepoCreator = new AdReportCreator();
+		adRepoCreator.createReport();
 	}
 }
