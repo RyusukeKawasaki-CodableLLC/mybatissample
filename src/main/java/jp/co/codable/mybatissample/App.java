@@ -1,6 +1,8 @@
 package jp.co.codable.mybatissample;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -40,6 +42,18 @@ public class App
 		}
 
 		AdReportCreator adRepoCreator = new AdReportCreator();
-		adRepoCreator.createReport();
+		// 書き込み用のデータの作成
+		List<UserCSV> list = new ArrayList<>();
+		UserCSV record1 = new UserCSV();
+		record1.setId(1);
+		record1.setName("山田太郎");
+		list.add(record1);
+
+		UserCSV record2 = new UserCSV();
+		record2.setId(2);
+		record2.setName("aiueo");
+		list.add(record2);
+		//adRepoCreator.createReport(list);
+		adRepoCreator.readReport();
 	}
 }
