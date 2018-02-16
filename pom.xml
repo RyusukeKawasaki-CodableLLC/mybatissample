@@ -35,7 +35,11 @@
 			<artifactId>super-csv-benchmark</artifactId>
 			<version>2.4.0</version>
 		</dependency>
-
+		<dependency>
+		    <groupId>com.github.mygreen</groupId>
+		    <artifactId>super-csv-annotation</artifactId>
+		    <version>2.1</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -62,6 +66,12 @@
 			<artifactId>h2</artifactId>
 			<version>1.4.196</version>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.20</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

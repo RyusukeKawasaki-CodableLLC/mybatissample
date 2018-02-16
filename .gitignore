@@ -9,14 +9,12 @@ local.properties
 .settings/
 .loadpath
 .recommenders
-
 .DS_Store
 /target
 *.class
 
 # External tool builders
 .externalToolBuilders/
-
 
 # Locally stored "Eclipse launch configurations"
 *.launch
@@ -32,4 +30,3 @@ local.properties
 
 # Code Recommenders
 .recommenders/
-/target/
