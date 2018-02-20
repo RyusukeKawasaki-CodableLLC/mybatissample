@@ -18,7 +18,7 @@ public class GreatorTest {
 
 	@Test
 	public void getMessageHello() {
-		String message = this.greator.getMessage(13);
+		String message = this.greator.getMessage(15);
 		assertThat(message, is("Hello"));
 	}
 
