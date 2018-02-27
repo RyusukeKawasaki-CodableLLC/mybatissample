@@ -17,6 +17,9 @@ import com.github.mygreen.supercsv.io.CsvAnnotationBeanWriter;
 public class AdReportCreator {
 	private static final Logger logger = LoggerFactory.getLogger(AdReportCreator.class);
 
+	/*
+	 * レポート出力
+	 */
 	public void createReport(List<UserCSV> list) {
 		try(	CsvAnnotationBeanWriter<UserCSV> csvWriter = new CsvAnnotationBeanWriter<>(UserCSV.class,
 				Files.newBufferedWriter(new File("sample.csv").toPath(), Charset.forName("Windows-31j"),StandardOpenOption.APPEND),
